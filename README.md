@@ -1,5 +1,7 @@
 # Airflow Assignment 2 – Load JSON Data from GCS to Hive on Dataproc
 
+![DAG Flow](DAG_flow.png)
+
 ## 📌 Objective
 
 This project implements an Apache Airflow DAG that performs the following:
