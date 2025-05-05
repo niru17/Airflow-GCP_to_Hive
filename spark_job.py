@@ -13,7 +13,8 @@ logger = logging.getLogger(__name__)
 def load(date):
     
     try:
-        spark=SparkSession.builder.appName("Implementing Spark on Hive").enableHiveSupport().getOrCreate()
+        spark=SparkSession.builder.appName("Implementing Spark on Hive")\
+            .config("spark.sql.warehouse.dir","gs://spark_ex_airflow/assignment1/hive_data/").enableHiveSupport().getOrCreate()
         logger.info("Spark Session started...")
 
         input_path=f"gs://spark_ex_airflow/assignment1/data/employee-{date}.csv"
@@ -47,9 +48,9 @@ def load(date):
         filtered_data.write.mode("append").format("hive").saveAsTable("filtered_employee")
         logger.info("Data Appened to the table")
 
-        gcs_output_path=f"gs://spark_ex_airflow/assignment1/hive_data/employee-{date}.parquet"
-        filtered_data.write.mode("overwrite").parquet(gcs_output_path)
-        logger.info("Data added to GCS Bucket..")
+        # gcs_output_path=f"gs://spark_ex_airflow/assignment1/hive_data/employee-{date}.parquet"
+        # filtered_data.write.mode("overwrite").parquet(gcs_output_path)
+        # logger.info("Data added to GCS Bucket..")
 
     except Exception as e:
         logger.error(f"Error occurred due to: {e}")

@@ -98,7 +98,7 @@ sensor_task = PythonSensor(
     poke_interval=30,
     timeout=300,
     mode="poke",
-    provide_context=True,
+    #provide_context=True,
     dag=dag,
 )
 
