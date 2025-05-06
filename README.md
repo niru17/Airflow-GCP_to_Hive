@@ -6,7 +6,7 @@
 
 This project implements an Apache Airflow DAG that performs the following:
 
-- Dynamically fetches a daily employee JSON (CSV in this case) file from a Google Cloud Storage (GCS) bucket.
+- Dynamically fetches a daily employee CSV file from a Google Cloud Storage (GCS) bucket.
 - Validates the file's existence using a Python-based sensor.
 - Spins up a Dataproc cluster on GCP.
 - Submits a PySpark job to:
